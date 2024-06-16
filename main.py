@@ -183,37 +183,37 @@ with col4:
 
 st.markdown('<hr>', unsafe_allow_html=True)
 
-# # Fuel cost estimation section
-# st.subheader("Fuel Cost Estimation")
+# Fuel cost estimation section
+st.subheader("Fuel Cost Estimation")
 
-# # Enter the cost of fuel per kWh
-# fuel_cost_per_kwh_usd = st.number_input(
-#     "Enter the cost of fuel per kWh (in USD):",
-#     value=0.13,
-#     step=0.01
-# )
-# fuel_cost_per_kwh_eur = fuel_cost_per_kwh_usd * USD_TO_EUR
+# Enter the cost of fuel per kWh
+fuel_cost_per_kwh_usd = st.number_input(
+    "Enter the cost of fuel per kWh (in USD):",
+    value=0.13,
+    step=0.01
+)
+fuel_cost_per_kwh_eur = fuel_cost_per_kwh_usd * USD_TO_EUR
 
-# # Calculate the daily fuel cost
-# daily_power_consumption_kwh = net_power_requirement_per_day / 1000  # Converting power to kWh
-# daily_fuel_cost_usd = daily_power_consumption_kwh * fuel_cost_per_kwh_usd
-# daily_fuel_cost_eur = daily_fuel_cost_usd * USD_TO_EUR
+# Calculate the daily fuel cost
+daily_power_consumption_kwh = net_power_requirement_per_day / 1000  # Converting power to kWh
+daily_fuel_cost_usd = daily_power_consumption_kwh * fuel_cost_per_kwh_usd
+daily_fuel_cost_eur = daily_fuel_cost_usd * USD_TO_EUR
 
-# # Calculate the annual fuel cost
-# annual_fuel_cost_usd = daily_fuel_cost_usd * 365
-# annual_fuel_cost_eur = annual_fuel_cost_usd * USD_TO_EUR
+# Calculate the annual fuel cost
+annual_fuel_cost_usd = daily_fuel_cost_usd * 365
+annual_fuel_cost_eur = annual_fuel_cost_usd * USD_TO_EUR
 
-# st.write(f"**Daily Fuel Cost**: ${daily_fuel_cost_usd:.2f} / €{daily_fuel_cost_eur:.2f}")
-# st.write(f"**Annual Fuel Cost**: ${annual_fuel_cost_usd:.2f} / €{annual_fuel_cost_eur:.2f}")
+st.write(f"**Daily Fuel Cost**: ${daily_fuel_cost_usd:.2f} / €{daily_fuel_cost_eur:.2f}")
+st.write(f"**Annual Fuel Cost**: ${annual_fuel_cost_usd:.2f} / €{annual_fuel_cost_eur:.2f}")
 
-# st.markdown('<hr>', unsafe_allow_html=True)
+st.markdown('<hr>', unsafe_allow_html=True)
 
-# # Calculate break-even time
-# total_initial_cost_usd = total_cost_usd + recommended_battery_cost_usd
-# if annual_fuel_cost_usd > 0:
-#     break_even_time_years = total_initial_cost_usd / annual_fuel_cost_usd
-# else:
-#     break_even_time_years = float('inf')  # If there's no annual fuel cost, break-even time is infinite
+# Calculate break-even time
+total_initial_cost_usd = total_cost_usd + recommended_battery_cost_usd
+if annual_fuel_cost_usd > 0:
+    break_even_time_years = total_initial_cost_usd / annual_fuel_cost_usd
+else:
+    break_even_time_years = float('inf')  # If there's no annual fuel cost, break-even time is infinite
 
-# st.write(f"**Total Initial Cost (Solar Panels + Battery)**: ${total_initial_cost_usd:.2f} / €{total_initial_cost_usd * USD_TO_EUR:.2f}")
-# st.write(f"**Break-even Time**: {break_even_time_years:.2f} years")
+st.write(f"**Total Initial Cost (Solar Panels + Battery)**: ${total_initial_cost_usd:.2f} / €{total_initial_cost_usd * USD_TO_EUR:.2f}")
+st.write(f"**Break-even Time**: {break_even_time_years:.2f} years")
